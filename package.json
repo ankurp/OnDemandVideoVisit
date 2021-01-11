@@ -2,6 +2,8 @@
   "name": "on-demand-video-visit",
   "private": true,
   "dependencies": {
+    "@hotwired/turbo": "^7.0.0-beta.2",
+    "@hotwired/turbo-rails": "^7.0.0-beta.3",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
@@ -12,9 +14,10 @@
     "jquery": "^3.5.1",
     "local-time": "^2.1.0",
     "popper.js": "^1.16.1",
-    "turbolinks": "^5.2.0"
+    "stimulus": "^2.0.0",
+    "twilio-video": "2.8.0"
   },
-  "version": "0.1.0",
+  "version": "1.0.0",
   "devDependencies": {
     "webpack-dev-server": "^3.11.1"
   }

@@ -2,16 +2,14 @@
 <html>
   <head>
     <%= render 'shared/head' %>
+    <%= stimulus_include_tags %>
   </head>
-
-  <body>
+  <body class="<%= controller_name.gsub(/_controller$/, '').dasherize %> <%= action_name %>">
     <%= render 'shared/navbar' %>
     <%= render 'shared/notices' %>
-
     <div class="container">
       <%= yield %>
     </div>
-
     <%= render 'shared/footer' %>
   </body>
 </html>

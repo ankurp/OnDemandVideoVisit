@@ -1,0 +1,49 @@
+<h1 class="mb-4">Welcome <%= @dashboard.user.name %> 👋</h1>
+<div>
+  <div class="d-flex">
+    <% @dashboard.video_calls.not_started.each do |video_call| %>
+      <div class="card mr-4 mb-4" style="width: 18rem;">
+        <div class="card-body bg-gradient-warning">
+          <h5 class="card-title">
+            <span class="badge badge-primary">Reason for call</span>
+            <br/>
+            <%= video_call.reason %>
+          </h5>
+          <p class="card-text">
+            <span class="badge badge-light">Created</span>
+            <br/>
+            <%= time_ago_in_words(video_call.created_at) %>
+          </p>
+          <hr/>
+          <%= link_to video_call_path(video_call) do %>
+            Go to waiting room <span><i class="fa fa-external-link-square-alt" aria-hidden="true"></i></span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div>
+  <div class="d-flex">
+    <% @dashboard.video_calls.in_progress.each do |video_call| %>
+      <div class="card mr-4 mb-4" style="width: 18rem;">
+        <div class="card-body bg-gradient-light">
+          <h5 class="card-title">
+            <span class="badge badge-primary">Reason for call</span>
+            <br/>
+            <%= video_call.reason %>
+          </h5>
+          <p class="card-text">
+            <span class="badge badge-light">Created</span>
+            <br/>
+            <%= time_ago_in_words(video_call.created_at) %>
+          </p>
+          <hr/>
+          <%= link_to video_call_path(video_call) do %>
+            Go to waiting room <span><i class="fa fa-external-link-square-alt" aria-hidden="true"></i></span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<%= turbo_stream_from :video_calls %>
+
+<turbo-frame>
+  <div class="table-responsive-sm">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Reason</th>
+          <th scope="col">Started at</th>
+        </tr>
+      </thead>
+      <tbody id="video_calls">
+        <%= render @dashboard.video_calls.not_completed %>
+      </tbody>
+    </table>
+  </div>
+</turbo-frame>

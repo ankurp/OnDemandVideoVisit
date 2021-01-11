@@ -1,0 +1,6 @@
+<tr id="<%= dom_id(video_call) %>">
+  <th scope="row"><%= video_call.id %></th>
+  <td><%= video_call.users.map(&:name).join(', ') %></td>
+  <td><%= video_call.reason %></td>
+  <td><%= time_ago_in_words(video_call.created_at) %></td>
+</tr>

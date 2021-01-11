@@ -2,6 +2,8 @@
 // $light-orange: #ff8c00;
 // $navbar-default-color: $light-orange;
 
+$enable-gradients: true;
+
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "bootstrap";
@@ -19,4 +21,53 @@
 // Masquerade alert shouldn't have a bottom margin
 body > .alert {
   margin-bottom: 0;
+}
+
+.video-calls.show {
+  margin: 0;
+  > nav, > footer {
+    display: none;
+  }
+  > .container {
+    max-width: none;
+    padding: 0;
+  }
+  .controls {
+    position: fixed;
+    bottom: 20px;
+    left: calc(50% - 73px);
+  }
+  .spinner-grow {
+    position: fixed;
+    height: 6rem;
+    width: 6rem;
+    top: calc(50% - 3rem);
+    left: calc(50% - 3rem);
+  }
+
+  #remote-media-div {
+    height: 100%;
+    video {
+      flex: 1 1 auto;
+    }
+    audio {
+      display: none;
+    }
+    video + .spinner-grow {
+      display: none;
+    }
+    audio + .spinner-grow {
+      display: none;
+    }
+  }
+  #local-media {
+    height: 100px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    video {
+      height: 100%;
+      border-radius: 10px;
+    }
+  }
 }

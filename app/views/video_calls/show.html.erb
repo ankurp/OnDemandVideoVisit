@@ -1,0 +1,22 @@
+<div class="d-flex justify-content-center bg-dark">
+  <%= content_tag :div, data: @video_call.html_data_attributes(current_user), class: "vh-100 w-100" do %>
+    <div id="remote-media-div" class="d-flex flex-column flex-lg-row flex-nowrap">
+      <div class="spinner-grow text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <div id="local-media"></div>
+
+    <div class="controls">
+      <button type="button" class="btn btn-secondary" data-action="videocall#toggleAudio">
+        <i class="fa fa-microphone-slash" aria-hidden="true"></i>
+      </button>
+      <button type="button" class="btn btn-secondary" data-action="videocall#toggleVideo">
+        <i class="fa fa-video-slash" aria-hidden="true"></i>
+      </button>
+      <button type="button" class="btn btn-danger" data-action="videocall#disconnect">
+        <i class="fa fa-phone-slash" aria-hidden="true"></i>
+      </button>
+    </div>
+  <% end %>
+</div>

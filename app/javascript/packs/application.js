@@ -3,18 +3,19 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-require("@rails/ujs").start()
-require("turbolinks").start()
-require("@rails/activestorage").start()
-require("channels")
-require("local-time").start()
+import Rails from "@rails/ujs";
+import "@hotwired/turbo-rails";
+import * as ActiveStorage from "@rails/activestorage";
+import "channels";
+import 'controllers';
+require('local-time').start();
+require('bootstrap');
+require('data-confirm-modal');
 
-window.Rails = Rails
+Rails.start()
+ActiveStorage.start()
 
-import 'bootstrap'
-import 'data-confirm-modal'
-
-$(document).on("turbolinks:load", () => {
-  $('[data-toggle="tooltip"]').tooltip()
-  $('[data-toggle="popover"]').popover()
-})
+$(document).on('turbo:load', () => {
+  $('[data-toggle="tooltip"]').tooltip();
+  $('[data-toggle="popover"]').popover();
+});
