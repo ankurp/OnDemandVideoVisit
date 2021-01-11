@@ -1,24 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Get Started
 
-Things you may want to cover:
+## Requirements
+* Install ruby v3.0.0. You can install that directly or using `rvm`
+* Then install bundler using `gem install bundler`
+* Then install foreman using `gem install foreman`
+* Clone this repo and run the commands inside the repo to get started
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Steps to run locally
+* Run `bundle` command to install server side dependencies
+* Run `yarn` to install javascript depenedencies
+* Run `rails db:create && rails db:migrate`
+* Run `foreman start` to start all processes
+* Go to http://localhost:3000
