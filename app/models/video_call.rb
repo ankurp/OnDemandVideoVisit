@@ -7,8 +7,6 @@ class VideoCall < ApplicationRecord
 
   has_and_belongs_to_many :users
 
-  scope :not_started, -> { where(status: :not_started) }
-  scope :in_progress, -> { where(status: :in_progress) }
   scope :completed, -> { where(status: :completed) }
   scope :not_completed, -> { where(status: [:not_started, :in_progress]) }
 

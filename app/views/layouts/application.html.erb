@@ -2,7 +2,6 @@
 <html>
   <head>
     <%= render 'shared/head' %>
-    <%= stimulus_include_tags %>
   </head>
   <body class="<%= controller_name.gsub(/_controller$/, '').dasherize %> <%= action_name %>">
     <%= render 'shared/navbar' %>
