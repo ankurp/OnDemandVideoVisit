@@ -48,7 +48,7 @@ gem "sass-rails", ">= 6"
 gem "sidekiq", "~> 6.0", ">= 6.0.3"
 gem "sitemap_generator", "~> 6.1", ">= 6.1.2"
 gem "standard", "~> 0.11.0"
-gem "turbo-rails", "~> 0.5.3"
+gem "turbo-rails", "~> 0.5.7"
 gem "twilio-ruby", "~> 5.45", ">= 5.45.1"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "webpacker", "~> 5.0"

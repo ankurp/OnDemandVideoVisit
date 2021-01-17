@@ -5,10 +5,8 @@ class VideoCall < ApplicationRecord
 
   enum status: [ :not_started, :in_progress, :completed ]
 
-  has_and_belongs_to_many :users
-
   scope :completed, -> { where(status: :completed) }
-  scope :not_completed, -> { where(status: [:not_started, :in_progress]) }
+  scope :not_completed, -> { where(status: [ :not_started, :in_progress ]) }
 
   @@account_sid = Rails.application.credentials[:twilio][:account_sid]
   @@auth_token = Rails.application.credentials[:twilio][:auth_token]
@@ -17,7 +15,9 @@ class VideoCall < ApplicationRecord
 
   after_create :create_twilio_room
 
-  broadcasts_to ->(video_call) { :video_calls }
+  has_and_belongs_to_many :users
+
+  broadcasts_to ->(video_call) { :video_calls }, with: :users
 
   def client
     @client ||= Twilio::REST::Client.new(@@account_sid, @@auth_token)

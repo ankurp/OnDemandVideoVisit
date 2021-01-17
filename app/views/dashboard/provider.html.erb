@@ -1,4 +1,4 @@
-<%= turbo_stream_from :video_calls %>
+<%= turbo_stream_from [:video_calls, current_user] %>
 
 <turbo-frame>
   <div class="table-responsive-sm">
