@@ -32,10 +32,10 @@ class VideoCallsController < ApplicationController
   def create
     @video_call = VideoCall.new(video_call_params)
     authorize @video_call
-    @video_call.users << current_user
+    @video_call.participants.build(user: current_user)
     respond_to do |format|
       if @video_call.save
-        format.html { redirect_to @video_call, notice: 'Please wait here till the doctor joins.' }
+        format.html { redirect_to @video_call, notice: "Please wait here till the doctor joins." }
         format.json { render :show, status: :created, location: @video_call }
       else
         format.html { render :new }
@@ -49,7 +49,7 @@ class VideoCallsController < ApplicationController
   def update
     respond_to do |format|
       if @video_call.update(video_call_params)
-        format.html { redirect_to @video_call, notice: 'Video call was successfully updated.' }
+        format.html { redirect_to @video_call, notice: "Video call was successfully updated." }
         format.json { render :show, status: :ok, location: @video_call }
       else
         format.html { render :edit }
@@ -63,19 +63,20 @@ class VideoCallsController < ApplicationController
   def destroy
     @video_call.destroy
     respond_to do |format|
-      format.html { redirect_to video_calls_url, notice: 'Video call was successfully destroyed.' }
+      format.html { redirect_to video_calls_url, notice: "Video call was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_video_call
-      @video_call = policy_scope(VideoCall).find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def video_call_params
-      params.require(:video_call).permit(:reason)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_video_call
+    @video_call = policy_scope(VideoCall).find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def video_call_params
+    params.require(:video_call).permit(:reason)
+  end
 end

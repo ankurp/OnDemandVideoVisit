@@ -38,7 +38,7 @@ module ApplicationHelper
 
     # @api private
     def clearance_session
-      @request.env['warden']
+      @request.env["warden"]
     end
 
     # @api private

@@ -1,3 +1,4 @@
-User.create(email: "admin@domain.com", password: "P@ssw0rd", user_role: :admin).confirm
-User.create(email: "ankur@domain.com", password: "P@ssw0rd").confirm
-User.create(email: "provider@domain.com", password: "P@ssw0rd", user_role: :provider).confirm
+User.create(name: "Admin User", email: "admin@domain.com", password: "P@ssw0rd", user_role: :admin).confirm
+User.create(name: "John Doe", email: "john@domain.com", password: "P@ssw0rd").confirm
+User.create(name: "Jane Doe", email: "jane@domain.com", password: "P@ssw0rd").confirm
+User.create(name: "Dr Patel", email: "provider@domain.com", password: "P@ssw0rd", user_role: :provider).confirm

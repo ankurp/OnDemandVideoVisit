@@ -1,12 +1,12 @@
-require 'twilio-ruby'
+require "twilio-ruby"
 
 class VideoCall < ApplicationRecord
   include Hashid::Rails
 
-  enum status: [ :not_started, :in_progress, :completed ]
+  enum status: [:not_started, :in_progress, :completed]
 
   scope :completed, -> { where(status: :completed) }
-  scope :not_completed, -> { where(status: [ :not_started, :in_progress ]) }
+  scope :not_completed, -> { where(status: [:not_started, :in_progress]) }
 
   @@account_sid = Rails.application.credentials[:twilio][:account_sid]
   @@auth_token = Rails.application.credentials[:twilio][:auth_token]
@@ -15,9 +15,12 @@ class VideoCall < ApplicationRecord
 
   after_create :create_twilio_room
 
-  has_and_belongs_to_many :users
+  # has_and_belongs_to_many :users
 
-  broadcasts_to ->(video_call) { :video_calls }, with: :users
+  has_many :participants, dependent: :destroy
+  has_many :users, through: :participants
+
+  broadcasts_to ->(video_call) { [:video_calls] }, target: "video_calls"
 
   def client
     @client ||= Twilio::REST::Client.new(@@account_sid, @@auth_token)
@@ -28,7 +31,7 @@ class VideoCall < ApplicationRecord
   end
 
   def create_twilio_room
-    room = client.video.rooms.create(unique_name: room_name, type: 'peer-to-peer')
+    client.video.rooms.create(unique_name: room_name, type: "peer-to-peer")
   end
 
   def access_token(user)
@@ -45,8 +48,8 @@ class VideoCall < ApplicationRecord
   def html_data_attributes(current_user)
     {
       controller: "videocall",
-      :"videocall-access-token-value" => access_token(current_user),
-      :"videocall-room-name-value" => room_name
+      "videocall-access-token-value": access_token(current_user),
+      "videocall-room-name-value": room_name
     }
   end
 end

@@ -16,8 +16,8 @@ class VideoCallsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create video_call" do
-    assert_difference('VideoCall.count') do
-      post video_calls_url, params: { video_call: { name: @video_call.name } }
+    assert_difference("VideoCall.count") do
+      post video_calls_url, params: {video_call: {name: @video_call.name}}
     end
 
     assert_redirected_to video_call_url(VideoCall.last)
@@ -34,12 +34,12 @@ class VideoCallsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update video_call" do
-    patch video_call_url(@video_call), params: { video_call: { name: @video_call.name } }
+    patch video_call_url(@video_call), params: {video_call: {name: @video_call.name}}
     assert_redirected_to video_call_url(@video_call)
   end
 
   test "should destroy video_call" do
-    assert_difference('VideoCall.count', -1) do
+    assert_difference("VideoCall.count", -1) do
       delete video_call_url(@video_call)
     end
 

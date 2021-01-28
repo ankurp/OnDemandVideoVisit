@@ -19,6 +19,6 @@ class DashboardController < ApplicationController
     return current_user.video_calls if current_user.patient?
     return policy_scope(VideoCall).all.order(created_at: :asc) if current_user.provider?
 
-    return []
+    []
   end
 end

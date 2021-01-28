@@ -19,11 +19,11 @@
         <%= link_to 'Destroy', video_call, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
       </div>
     <% end %>
-    <%= form.submit class: 'btn btn-primary' %>
+    <%= form.submit "Start Call", class: 'btn btn-primary' %>
     <% if video_call.persisted? %>
       <%= link_to "Cancel", video_call, class: "btn btn-link" %>
     <% else %>
-      <%= link_to "Cancel", video_calls_path, class: "btn btn-link" %>
+      <%= link_to "Cancel", root_path, class: "btn btn-link" %>
     <% end %>
   </div>
 <% end %>

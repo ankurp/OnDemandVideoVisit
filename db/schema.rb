@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_09_193422) do
+ActiveRecord::Schema.define(version: 2021_01_09_203024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,15 @@ ActiveRecord::Schema.define(version: 2021_01_09_193422) do
     t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
   end
 
+  create_table "participants", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "video_call_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_participants_on_user_id"
+    t.index ["video_call_id"], name: "index_participants_on_video_call_id"
+  end
+
   create_table "services", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "provider"
@@ -119,13 +128,6 @@ ActiveRecord::Schema.define(version: 2021_01_09_193422) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  create_table "users_video_calls", id: false, force: :cascade do |t|
-    t.bigint "video_call_id", null: false
-    t.bigint "user_id", null: false
-    t.index ["user_id", "video_call_id"], name: "index_users_video_calls_on_user_id_and_video_call_id"
-    t.index ["video_call_id", "user_id"], name: "index_users_video_calls_on_video_call_id_and_user_id"
-  end
-
   create_table "video_calls", force: :cascade do |t|
     t.string "reason"
     t.integer "status", default: 0
@@ -135,5 +137,7 @@ ActiveRecord::Schema.define(version: 2021_01_09_193422) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "participants", "users"
+  add_foreign_key "participants", "video_calls"
   add_foreign_key "services", "users"
 end

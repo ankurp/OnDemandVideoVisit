@@ -30,7 +30,7 @@ gem "devise_masquerade", "~> 1.2"
 gem "font-awesome-sass", "~> 5.13"
 gem "friendly_id", "~> 5.3"
 gem "hashid-rails", "~> 1.0"
-gem "hotwire-rails", '~> 0.1.2'
+gem "hotwire-rails", "~> 0.1.2"
 gem "image_processing"
 gem "jbuilder", "~> 2.7"
 gem "mini_magick", "~> 4.10", ">= 4.10.1"
