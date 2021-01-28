@@ -5,6 +5,8 @@ class CreateParticipants < ActiveRecord::Migration[6.1]
       t.references :video_call, null: false, foreign_key: true
 
       t.timestamps
+
+      t.index [:user_id, :video_call_id], unique: true
     end
   end
 end

@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2021_01_09_203024) do
     t.bigint "video_call_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id", "video_call_id"], name: "index_participants_on_user_id_and_video_call_id", unique: true
     t.index ["user_id"], name: "index_participants_on_user_id"
     t.index ["video_call_id"], name: "index_participants_on_video_call_id"
   end
