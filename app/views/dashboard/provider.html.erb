@@ -11,7 +11,12 @@
       </tr>
     </thead>
     <tbody id="video_calls">
-      <%= render @dashboard.video_calls.not_completed %>
+      <%= render(
+        partial: "video_calls/video_call_row",
+        collection: @dashboard.video_calls.not_completed,
+        as: :video_call 
+      )
+      %>
     </tbody>
   </table>
 </div>

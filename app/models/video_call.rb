@@ -20,7 +20,10 @@ class VideoCall < ApplicationRecord
   has_many :participants, dependent: :destroy
   has_many :users, through: :participants
 
-  broadcasts_to ->(video_call) { [:video_calls] }, target: "video_calls"
+  # broadcasts_to ->(video_call) { [:video_calls] }, target: "video_calls"
+  after_create_commit ->(video_call) { broadcast_append_to [:video_calls], partial: "video_calls/video_call_row" }
+  after_update_commit ->(video_call) { broadcast_replace_to [:video_calls], partial: "video_calls/video_call_row" }
+  after_destroy_commit ->(video_call) { broadcast_remove_to [:video_calls] }
 
   def client
     @client ||= Twilio::REST::Client.new(@@account_sid, @@auth_token)
