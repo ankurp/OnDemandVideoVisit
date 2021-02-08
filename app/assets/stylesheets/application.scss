@@ -23,6 +23,17 @@ body > .alert {
   margin-bottom: 0;
 }
 
+.dashboard.show {
+  .card {
+    width: 100%;
+  }
+  @include media-breakpoint-up(md) {
+    .card {
+      width: calc(50% - 24px);
+    }
+  }
+}
+
 .video-calls.show {
   margin: 0;
   > nav, > footer {
