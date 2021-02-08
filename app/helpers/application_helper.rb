@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def is_mobile_app?
+    @is_mobile_app ||= request.headers['User-Agent'].include?("Turbo")
+  end
+
   def bootstrap_class_for(flash_type)
     {
       success: "alert-success",

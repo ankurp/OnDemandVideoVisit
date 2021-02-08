@@ -3,4 +3,5 @@
   <td><%= video_call.users.map(&:name).join(', ') %></td>
   <td><%= video_call.reason %></td>
   <td><%= time_ago_in_words(video_call.created_at) %></td>
+  <td><%= link_to "Join", video_call_path(video_call) %></td>
 </tr>

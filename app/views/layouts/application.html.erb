@@ -4,11 +4,15 @@
     <%= render 'shared/head' %>
   </head>
   <body class="<%= controller_name.gsub(/_controller$/, '').dasherize %> <%= action_name %>">
-    <%= render 'shared/navbar' %>
+    <% unless is_mobile_app? %>
+      <%= render 'shared/navbar' %>
+    <% end %>
     <%= render 'shared/notices' %>
     <div class="container">
       <%= yield %>
     </div>
-    <%= render 'shared/footer' %>
+    <% unless is_mobile_app? %>
+      <%= render 'shared/footer' %>
+    <% end %>
   </body>
 </html>

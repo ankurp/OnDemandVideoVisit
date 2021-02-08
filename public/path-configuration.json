@@ -1,0 +1,26 @@
+{
+  "settings": {
+    "enable-feature-x": true
+  },
+  "rules": [
+    {
+      "patterns": [
+        "/new$",
+        "/edit$",
+        "/users/sign_in$",
+        "/users/sign_up$"
+      ],
+      "properties": {
+        "presentation": "modal"
+      }
+    },
+    {
+      "patterns": [
+        "^/video_calls/"
+      ],
+      "properties": {
+        "view-controller": "video-visit"
+      }
+    }
+  ]
+}

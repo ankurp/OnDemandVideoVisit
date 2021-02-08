@@ -18,7 +18,7 @@
     <tbody>
       <% @video_calls.each do |video_call| %>
         <%= content_tag :tr, id: dom_id(video_call), class: dom_class(video_call) do %>
-          <td><%= link_to video_call.name, video_call %></td>
+          <td><%= link_to video_call.reason, video_call %></td>
         <% end %>
       <% end %>
     </tbody>
