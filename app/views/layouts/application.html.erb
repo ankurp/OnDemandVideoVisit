@@ -14,5 +14,10 @@
     <% unless is_mobile_app? %>
       <%= render 'shared/footer' %>
     <% end %>
+    <% if Rails.env.development? %>
+      <div style="display: none; position: fixed; bottom: 10px; right: 10px; z-index: 100;">
+        Active Connections: <%= ActionCable.server.connections.length %>
+      </div>
+    <% end %>
   </body>
 </html>
