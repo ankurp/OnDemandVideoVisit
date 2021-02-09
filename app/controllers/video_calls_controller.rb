@@ -30,9 +30,8 @@ class VideoCallsController < ApplicationController
   # POST /video_calls
   # POST /video_calls.json
   def create
-    @video_call = VideoCall.new(video_call_params)
+    @video_call = VideoCall.new(video_call_params.merge({ users: [current_user] }))
     authorize @video_call
-    @video_call.participants.build(user: current_user)
     respond_to do |format|
       if @video_call.save
         format.html { redirect_to @video_call, notice: "Please wait here till the doctor joins." }
@@ -61,9 +60,10 @@ class VideoCallsController < ApplicationController
   # DELETE /video_calls/1
   # DELETE /video_calls/1.json
   def destroy
+    authorize @video_call
     @video_call.destroy
     respond_to do |format|
-      format.html { redirect_to video_calls_url, notice: "Video call was successfully destroyed." }
+      format.html { redirect_to root_path, notice: "Video call was successfully cancelled." }
       format.json { head :no_content }
     end
   end

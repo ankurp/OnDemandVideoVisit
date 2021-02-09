@@ -1,11 +1,10 @@
+<%# "users_#{current_user.id}:video_calls" %>
 <%= turbo_stream_from [current_user, :video_calls] %>
 
 <h1 class="mb-4">Welcome <%= @dashboard.user.name %> 👋</h1>
 <div>
   <div id="video_calls" class="d-flex flex-row flex-wrap flex-xs-column align-content-stretch">
-    <%=
-      render(@dashboard.video_calls.not_completed) ||
-      render(partial: "video_calls/start_call")
-    %>
+    <%= render(@dashboard.video_calls.not_completed) %>
+    <%= render(partial: "video_calls/start_call") %>
   </div>
 </div>

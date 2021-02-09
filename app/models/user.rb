@@ -11,8 +11,7 @@ class User < ApplicationRecord
   has_many :notifications, as: :recipient
   has_many :services
 
-  has_many :participants, dependent: :destroy
-  has_many :video_calls, through: :participants
+  has_and_belongs_to_many :video_calls
 
   enum user_role: [:patient, :admin, :staff, :provider]
 end

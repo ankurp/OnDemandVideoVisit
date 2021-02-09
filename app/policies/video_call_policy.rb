@@ -20,4 +20,8 @@ class VideoCallPolicy < ApplicationPolicy
   def show?
     !user.patient? || record.users.exists?(user.id)
   end
+
+  def destroy?
+    !user.patient? || record.users.exists?(user.id)
+  end
 end

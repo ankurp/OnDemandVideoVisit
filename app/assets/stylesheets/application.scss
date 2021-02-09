@@ -32,6 +32,10 @@ body > .alert {
       width: calc(50% - 24px);
     }
   }
+
+  .card + .jumbotron {
+    display: none;
+  }
 }
 
 .video-calls.show {

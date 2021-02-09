@@ -15,12 +15,12 @@ class VideoCall < ApplicationRecord
 
   after_create :create_twilio_room
 
-  # has_and_belongs_to_many :users
+  has_and_belongs_to_many :users
 
-  has_many :participants, dependent: :destroy
-  has_many :users, through: :participants
-
-  # broadcasts_to ->(video_call) { [:video_calls] }, target: "video_calls"
+  after_create_commit  -> { self.users.each { |u| broadcast_action_later_to [u, :video_calls], action: :prepend } }
+  after_update_commit  -> { self.users.each { |u| broadcast_replace_later_to [u, :video_calls] } }
+  before_destroy -> { self.users.each { |u| broadcast_remove_to [u, :video_calls] } }
+  
   after_create_commit ->(video_call) { broadcast_append_to [:video_calls], partial: "video_calls/video_call_row" }
   after_update_commit ->(video_call) { broadcast_replace_to [:video_calls], partial: "video_calls/video_call_row" }
   after_destroy_commit ->(video_call) { broadcast_remove_to [:video_calls] }
