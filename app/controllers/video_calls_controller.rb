@@ -9,6 +9,10 @@ class VideoCallsController < ApplicationController
   def index
     @video_calls = policy_scope(VideoCall).all
     authorize @video_calls
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render @video_calls }
+    end
   end
 
   # GET /video_calls/1
