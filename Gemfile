@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.0.0"
+ruby "3.2.2"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
@@ -39,7 +39,7 @@ gem "noticed", "~> 1.2"
 gem "omniauth-facebook", "~> 6.0"
 gem "omniauth-github", "~> 1.4"
 gem "omniauth-twitter", "~> 1.4"
-gem "pg", "~> 1.1"
+gem "pg", "~> 1.5"
 gem "puma", "~> 5.0"
 gem "pundit", "~> 2.1"
 gem "rails", "~> 6.1.1"
@@ -53,3 +53,5 @@ gem "twilio-ruby", "~> 5.45", ">= 5.45.1"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "webpacker", "~> 5.0"
 gem "whenever", require: false
+
+gem "builder", "~> 3.2"

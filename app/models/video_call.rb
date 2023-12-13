@@ -13,7 +13,7 @@ class VideoCall < ApplicationRecord
   @@api_key_sid = Rails.application.credentials[:twilio][:sid]
   @@api_key_secret = Rails.application.credentials[:twilio][:secret]
 
-  after_create :create_twilio_room
+  # after_create :create_twilio_room
 
   has_and_belongs_to_many :users
 

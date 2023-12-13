@@ -10,8 +10,8 @@ class VideoCallsController < ApplicationController
     @video_calls = policy_scope(VideoCall).all
     authorize @video_calls
     respond_to do |format|
-      format.html { render :index }
-      format.json { render @video_calls }
+      format.html
+      format.json
     end
   end
 
@@ -19,6 +19,10 @@ class VideoCallsController < ApplicationController
   # GET /video_calls/1.json
   def show
     authorize @video_call
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   # GET /video_calls/new
